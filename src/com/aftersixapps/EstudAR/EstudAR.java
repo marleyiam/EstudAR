@@ -54,6 +54,10 @@ public class EstudAR extends Activity
     private static final String NATIVE_LIB_SAMPLE = "EstudAR";    
     private static final String NATIVE_LIB_QCAR = "QCAR"; 
 
+    private static final int DATASET_ESTUDAR = 0;
+    private static final int DATASET_STONES_AND_CHIPS = 1;
+    private static final int DATASET_TARMAC = 2;
+    
     // Our OpenGL view:
     private QCARSampleGLView mGlView;
     
@@ -99,7 +103,7 @@ public class EstudAR extends Activity
     
     // The menu item for swapping data sets:
     MenuItem mDataSetMenuItem = null;
-    boolean mIsStonesAndChipsDataSetActive  = false;
+    int mDataSetActive = DATASET_ESTUDAR;
     
     /** Static initializer block to load native libraries on start-up. */
     static
@@ -228,7 +232,7 @@ public class EstudAR extends Activity
             if (result)
             {
                 // The stones and chips data set is now active:
-                mIsStonesAndChipsDataSetActive = true;
+                mDataSetActive = DATASET_ESTUDAR;
                 
                 // Done loading the tracker, update application status: 
                 updateApplicationStatus(APPSTATUS_INITED);
@@ -724,7 +728,7 @@ public class EstudAR extends Activity
     {
         super.onCreateOptionsMenu(menu);
                         
-        mDataSetMenuItem = menu.add("Switch dataset");
+        mDataSetMenuItem = menu.add("Switch to StonesAndChips dataset");
         menu.add("Toggle flash");
         menu.add("Trigger autofocus");
         
@@ -748,14 +752,18 @@ public class EstudAR extends Activity
         if(item == mDataSetMenuItem)
         {
            switchDatasetAsap();
-           mIsStonesAndChipsDataSetActive = !mIsStonesAndChipsDataSetActive;
-           if (mIsStonesAndChipsDataSetActive)
-           {
+           
+//           mIsStonesAndChipsDataSetActive = !mIsStonesAndChipsDataSetActive;
+           if (mDataSetActive == DATASET_ESTUDAR) {
+        	   mDataSetActive = DATASET_STONES_AND_CHIPS;
                item.setTitle("Switch to Tarmac dataset");
-           }
-           else
+           } else if (mDataSetActive == DATASET_STONES_AND_CHIPS)
            {
-               item.setTitle("Switch to StonesAndChips dataset");
+        	   mDataSetActive = DATASET_TARMAC;
+               item.setTitle("Switch to EstudAR dataset");
+           } else {
+        	   mDataSetActive = DATASET_ESTUDAR;
+        	   item.setTitle("Switch to StonesAndChips dataset");
            }
             
         }
