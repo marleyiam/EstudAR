@@ -20,10 +20,10 @@ obj/local/armeabi-v7a/objs-debug/EstudAR/EstudAR.o: jni/EstudAR.cpp \
  /home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/string.h \
  /home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/malloc.h \
  /home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/assert.h \
- /home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/GLES2/gl2.h \
- /home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/GLES2/gl2platform.h \
+ /home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/GLES/gl.h \
+ /home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/GLES/glplatform.h \
  /home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/KHR/khrplatform.h \
- /home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/GLES2/gl2ext.h \
+ /home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/GLES/glext.h \
  /home/geison/workspace/EstudoAR/qcar/include/QCAR/QCAR.h \
  /home/geison/workspace/EstudoAR/qcar/include/QCAR/System.h \
  /home/geison/workspace/EstudoAR/qcar/include/QCAR/CameraDevice.h \
@@ -43,7 +43,8 @@ obj/local/armeabi-v7a/objs-debug/EstudAR/EstudAR.o: jni/EstudAR.cpp \
  /home/geison/workspace/EstudoAR/qcar/include/QCAR/ImageTracker.h \
  /home/geison/workspace/EstudoAR/qcar/include/QCAR/UpdateCallback.h \
  /home/geison/workspace/EstudoAR/qcar/include/QCAR/DataSet.h \
- jni/SampleUtils.h jni/Texture.h jni/CubeShaders.h jni/Teapot.h
+ jni/SampleUtils.h jni/Texture.h jni/CubeShaders.h jni/Teapot.h \
+ jni/cube.h
 
 /home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/jni.h:
 
@@ -87,13 +88,13 @@ obj/local/armeabi-v7a/objs-debug/EstudAR/EstudAR.o: jni/EstudAR.cpp \
 
 /home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/assert.h:
 
-/home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/GLES2/gl2.h:
+/home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/GLES/gl.h:
 
-/home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/GLES2/gl2platform.h:
+/home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/GLES/glplatform.h:
 
 /home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/KHR/khrplatform.h:
 
-/home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/GLES2/gl2ext.h:
+/home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/GLES/glext.h:
 
 /home/geison/workspace/EstudoAR/qcar/include/QCAR/QCAR.h:
 
@@ -140,3 +141,5 @@ jni/Texture.h:
 jni/CubeShaders.h:
 
 jni/Teapot.h:
+
+jni/cube.h:

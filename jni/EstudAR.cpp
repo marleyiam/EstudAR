@@ -42,6 +42,7 @@
 #include "Texture.h"
 #include "CubeShaders.h"
 #include "Teapot.h"
+#include "cube.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -102,8 +103,8 @@ class ImageTargets_UpdateCallback: public QCAR::UpdateCallback {
 				imageTracker->deactivateDataSet(dataSetEstudAR);
 				imageTracker->activateDataSet(dataSetStonesAndChips);
 				LOG("DataSet Ativo: StoneAndChips");
-			}
-			else if (imageTracker->getActiveDataSet() == dataSetStonesAndChips) {
+			} else if (imageTracker->getActiveDataSet()
+					== dataSetStonesAndChips) {
 				imageTracker->deactivateDataSet(dataSetStonesAndChips);
 				imageTracker->activateDataSet(dataSetTarmac);
 				LOG("DataSet Ativo: Tarmac");
@@ -339,8 +340,12 @@ Java_com_aftersixapps_EstudAR_ImageTargetsRenderer_renderFrame(JNIEnv *, jobject
 
 #ifdef USE_OPENGL_ES_1_1
 	// Set GL11 flags:
+	//glFrontFace(GL_CW);
+
 	glEnableClientState(GL_VERTEX_ARRAY);
-	glEnableClientState(GL_NORMAL_ARRAY);
+	glEnableClientState(GL_COLOR_ARRAY);
+
+//	glEnableClientState(GL_NORMAL_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
 	glEnable(GL_TEXTURE_2D);
@@ -361,7 +366,12 @@ Java_com_aftersixapps_EstudAR_ImageTargetsRenderer_renderFrame(JNIEnv *, jobject
 
 		// Choose the texture based on the target name:
 		int textureIndex;
-		if (strcmp(trackable->getName(), "chips") == 0)
+
+		if (strcmp(trackable->getName(), "goku") == 0)
+		{
+			textureIndex = -1;
+		}
+		else if (strcmp(trackable->getName(), "chips") == 0)
 		{
 			textureIndex = 0;
 		}
@@ -388,12 +398,29 @@ Java_com_aftersixapps_EstudAR_ImageTargetsRenderer_renderFrame(JNIEnv *, jobject
 		glScalef(kObjectScale, kObjectScale, kObjectScale);
 
 		// Draw object:
-		glBindTexture(GL_TEXTURE_2D, thisTexture->mTextureID);
-		glTexCoordPointer(2, GL_FLOAT, 0, (const GLvoid*) &teapotTexCoords[0]);
-		glVertexPointer(3, GL_FLOAT, 0, (const GLvoid*) &teapotVertices[0]);
-		glNormalPointer(GL_FLOAT, 0, (const GLvoid*) &teapotNormals[0]);
-		glDrawElements(GL_TRIANGLES, NUM_TEAPOT_OBJECT_INDEX, GL_UNSIGNED_SHORT,
-				(const GLvoid*) &teapotIndices[0]);
+
+		if (textureIndex >= 0) {
+			glFrontFace(GL_CCW);
+
+			glBindTexture(GL_TEXTURE_2D, thisTexture->mTextureID);
+			glTexCoordPointer(2, GL_FLOAT, 0, (const GLvoid*) &teapotTexCoords[0]);
+			glVertexPointer(3, GL_FLOAT, 0, (const GLvoid*) &teapotVertices[0]);
+//			glNormalPointer(GL_FLOAT, 0, (const GLvoid*) &teapotNormals[0]);
+			glDrawElements(GL_TRIANGLES, NUM_TEAPOT_OBJECT_INDEX, GL_UNSIGNED_SHORT,
+					(const GLvoid*) &teapotIndices[0]);
+		} else {
+			glFrontFace(GL_CW);
+
+			glVertexPointer(3, GL_FLOAT, 0, (const GLvoid*) &cubeVertices[0]);
+			glColorPointer(4, GL_FLOAT, 0, (const GLvoid*) &cubeColors[0]);
+
+			glDrawElements(GL_TRIANGLES, NUM_CUBE_OBJECT_INDEX, GL_UNSIGNED_SHORT,
+					(const GLvoid*) &cubeIndices[0]);
+
+
+
+		}
+
 #else
 
 		QCAR::Matrix44F modelViewProjection;
@@ -436,7 +463,8 @@ Java_com_aftersixapps_EstudAR_ImageTargetsRenderer_renderFrame(JNIEnv *, jobject
 #ifdef USE_OPENGL_ES_1_1        
 	glDisable(GL_TEXTURE_2D);
 	glDisableClientState(GL_VERTEX_ARRAY);
-	glDisableClientState(GL_NORMAL_ARRAY);
+	glDisableClientState(GL_COLOR_ARRAY);
+//	glDisableClientState(GL_NORMAL_ARRAY);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 #else
 	glDisableVertexAttribArray(vertexHandle);

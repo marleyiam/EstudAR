@@ -30,10 +30,10 @@ obj/local/armeabi-v7a/objs-debug/EstudAR/SampleUtils.o: \
  /home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/alloca.h \
  /home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/strings.h \
  /home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/memory.h \
- /home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/GLES2/gl2.h \
- /home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/GLES2/gl2platform.h \
+ /home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/GLES/gl.h \
+ /home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/GLES/glplatform.h \
  /home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/KHR/khrplatform.h \
- /home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/GLES2/gl2ext.h
+ /home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/GLES/glext.h
 
 jni/SampleUtils.h:
 
@@ -97,10 +97,10 @@ jni/SampleUtils.h:
 
 /home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/memory.h:
 
-/home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/GLES2/gl2.h:
+/home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/GLES/gl.h:
 
-/home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/GLES2/gl2platform.h:
+/home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/GLES/glplatform.h:
 
 /home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/KHR/khrplatform.h:
 
-/home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/GLES2/gl2ext.h:
+/home/geison/Programas/android-ndk-r7b/platforms/android-8/arch-arm/usr/include/GLES/glext.h:
